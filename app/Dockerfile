@@ -1,7 +1,10 @@
-# Multi-stage build for Node.js static website
+# Multi-stage build for Node.js application
 FROM node:22-alpine AS builder
 
 WORKDIR /app
+
+# Update npm in builder stage to get fixed transitive packages
+RUN npm install -g npm@latest
 
 COPY package*.json ./
 
@@ -12,8 +15,11 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-# Upgrade base OS packages to reduce vulnerabilities
+# Upgrade Alpine packages
 RUN apk update && apk upgrade --no-cache
+
+# Update npm in final image to fix bundled npm vulnerabilities like picomatch
+RUN npm install -g npm@latest
 
 # Copy production dependencies
 COPY --from=builder /app/node_modules ./node_modules
