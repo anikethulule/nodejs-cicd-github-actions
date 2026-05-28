@@ -16,7 +16,7 @@ architecture   = "amd64"
 key_name        = "nodejs-k8s-key"
 public_key_path = "~/.ssh/nodejs-k8s-key.pub"
 
-allowed_ssh_cidr = "167.103.3.11/32"
+allowed_ssh_cidr = "0.0.0.0/0"
 allowed_app_cidr = "0.0.0.0/0"
 
 nodeport = 30080
