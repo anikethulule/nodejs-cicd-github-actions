@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Node.js Static Website on Kubernetes</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">DevOps Project</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#tools">Tools</a>
+      <a href="#status">Status</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Static Website Deployed on Kubernetes</h1>
+      <p>
+        This website is served by a Node.js Express application, containerized using Docker,
+        deployed on Kubernetes, and infrastructure is provisioned using Terraform.
+      </p>
+
+      <div class="buttons">
+        <a href="/health" class="btn primary">Health Check</a>
+        <a href="/api/info" class="btn secondary">API Info</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="architecture" class="section">
+    <h2>Project Architecture</h2>
+
+    <div class="architecture-box">
+      <div>Developer</div>
+      <span>→</span>
+      <div>GitHub</div>
+      <span>→</span>
+      <div>GitHub Actions</div>
+      <span>→</span>
+      <div>Docker Hub</div>
+      <span>→</span>
+      <div>Kubernetes</div>
+    </div>
+  </section>
+
+  <section id="tools" class="section light">
+    <h2>Tools Used</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Node.js</h3>
+        <p>Used to serve the static website and API endpoints.</p>
+      </div>
+
+      <div class="card">
+        <h3>Docker</h3>
+        <p>Used to package the application as a container image.</p>
+      </div>
+
+      <div class="card">
+        <h3>Kubernetes</h3>
+        <p>Used to run and expose the application using Deployment and Service.</p>
+      </div>
+
+      <div class="card">
+        <h3>Terraform</h3>
+        <p>Used to provision AWS infrastructure and Kubernetes server.</p>
+      </div>
+
+      <div class="card">
+        <h3>GitHub Actions</h3>
+        <p>Used to automate build, test, image push, and deployment.</p>
+      </div>
+
+      <div class="card">
+        <h3>Docker Hub</h3>
+        <p>Used as the container image registry.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="section">
+    <h2>Application Status</h2>
+    <p id="statusText">Checking application status...</p>
+  </section>
+
+  <footer>
+    <p>Created by Aniket Hulule | DevOps CI/CD Portfolio Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Node.js
+app/node_modules
+app/npm-debug.log
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars.backup
+.terraform.lock.hcl
+crash.log
+crash.*.log
+
+# SSH Keys
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+nodejs-k8s-key
+nodejs-k8s-key.pub
+
+# OS
+.DS_Store
+Thumbs.db
