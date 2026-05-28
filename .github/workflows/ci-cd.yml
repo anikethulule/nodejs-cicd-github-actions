@@ -12,8 +12,8 @@ env:
   K8S_CONTAINER: nodejs-k8s-cicd
 
 jobs:
-  build-test-push-deploy:
-    name: Build, Test, Push Docker Image and Deploy to Kubernetes
+  build-test-scan-push-deploy:
+    name: Build, Test, Scan, Push Image and Deploy to Kubernetes
     runs-on: ubuntu-latest
 
     steps:
@@ -54,6 +54,16 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          format: table
+          vuln-type: os,library
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: '1'
 
       - name: Setup kubeconfig
         run: |
